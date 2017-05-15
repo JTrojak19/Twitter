@@ -5,7 +5,7 @@
 
     require_once 'head.php';
 
-    require_once 'Model\User.php';
+    require_once "User.php";
 
     $newUser = new User();
     $newUser->setUsername('newUser');
