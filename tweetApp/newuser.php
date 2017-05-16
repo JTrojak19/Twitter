@@ -1,44 +1,18 @@
-<?php 
-//include "User.php"; 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && $_POST['email'] && $_POST['password'])
-{
-    $username = $_POST['username']; 
-    $email = $_POST['email']; 
-    $password = $_POST['password']; 
-    
-    
-   
-    $user = new User(); 
-    $user->setUsername($username); 
-    $user->setEmail($email); 
-    $user->setPassword($email); 
-        
-    $connection = new mysqli(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME); 
-        
-    $user->saveToDB($connection); 
-    
-    echo "Utworzono nowego użytkownika"; 
-   
-}
+<?php
+echo '
+<form>
+    <legend>Registration panel</legend><br><hr>
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="Username"><br><br>
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" placeholder="E-mail"><br><br>
+    <label for="password1">Password:</label>
+    <input type="password" name="password1" placeholder="Password"><br><br>
+    <label for="password2">R-enter your password:</label>
+    <input type="password" name="password2" placeholder="Re-enter the password"><br><br>
+    <input type="submit" value="Register">
+</form>';
+
+
+
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        
-    </head>
-    <body>
-        <form action="main.php" method="post">
-            <input type="text" name="username" placeholder="Username:">
-            <br>
-            <br>
-            <input type="email" name="email" placeholder="email">
-            <br>
-            <br>
-            <input type="password" name="password" placeholder="password">
-            <br>
-            <br>
-            <input type="submit" value="Utwórz nowego użytkownika">
-            <p>Jeśli masz już konto zaloguj się <a href="login.php">tutaj</a></p>
-        </form>
-    </body>
-</html>
