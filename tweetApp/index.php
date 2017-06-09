@@ -23,25 +23,29 @@
         $newEmail = $_POST['email']; 
         $newPassword = $_POST['password']; 
         
-        $sql = "SELECT username, email FROM Users"; 
-        $result = $mysqli->query($sql); 
         
-        if ($result == true)
+        $newUser = new User(); 
+        $newUser->setUsername($newUsername); 
+        $newUser->setEmail($newEmail); 
+        $newUser->setPassword($newPassword); 
+        $newUser->saveToDB($mysqli); 
+            
+        $sql = "SELECT * FROM Users"; 
+        $result = $mysqli->query($sql); 
+        if ($result==true && $result->num_rows>0)
         {
-            $row=$result->fetch_assoc(); 
-            if ($row['email'] == $newEmail && $row['username'] == $newUsername)
-            {
-                echo "Podany nazwa użytkownika i email istnieją w bazie"; 
-            }
+                foreach ($result as $row)
+                {
+                    if ($row['email']==$newEmail)
+                    {
+                        $id = $row['id']; 
+                        $name = $row['username']; 
+                    }
+                }
+                var_dump($id); 
         }
-        else 
-        {
-            $newUser = new User(); 
-            $newUser->setUsername($newUsername); 
-            $newUser->setEmail($newEmail); 
-            $newUser->setPassword($newPassword); 
-            $newUser->saveToDB($mysqli); 
-            echo "Jesteś zarejestrowany w bazie. Przejdź do panelu logowania"; 
-        }
+        $user = User::loadUserById($mysqli, $id); 
+        
     }
+    
 ?>
