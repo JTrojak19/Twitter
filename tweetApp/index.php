@@ -28,5 +28,6 @@
         $newUser->setEmail($newEmail); 
         $newUser->setPassword($newPassword); 
         $newUser->saveToDB($mysqli); 
+        echo "Jesteś zarejestrowany w bazie. Przejdź do panelu logowania"; 
     }
 ?>
