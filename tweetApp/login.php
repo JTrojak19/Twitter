@@ -1,6 +1,6 @@
 <html>
     <body>
-        <form action="index.php" method="post">
+        <form action="" method="post">
             <input type="text" name="username" placeholder="username">
             <br>
             <br>
