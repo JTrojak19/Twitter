@@ -98,4 +98,19 @@ class Tweet
         }
         return $return; 
     }
+    public function saveToDB($connection)
+    {
+        if ($this->id==-1)
+        {
+            $sql = "INSERT INTO Tweet(userId, text, creationDate) VALUES('$this->userId', '$this->text', '$this->creationDate')"; 
+            $result = $conection->query($sql); 
+            
+            if ($result == true)
+            {
+                $this->id = $connection->insert_id; 
+                return true; 
+            }
+            return false; 
+        }
+    }
 }
