@@ -10,9 +10,9 @@ class Tweet
     public function __construct()
     {
         $this->id = -1; 
-        $this->userId = 0; 
+        $this->userId = ""; 
         $this->text = ""; 
-        $this->creationDate = 0; 
+        $this->creationDate = ""; 
     }
     
     public function setText($text)
@@ -39,5 +39,21 @@ class Tweet
     {
         return $this->userId; 
     }
-    
+    static public function loadTweetById(mysqli $connection, $id)
+    {
+       $sql = "SELECT * FROM Tweet WHERE id=$id"; 
+       $result = $connection->query($sql); 
+       
+       if ($result==true && $result->num_rows == 1)
+       {
+           $row = $result->fetch_assoc(); 
+           $loadedTweet = new Tweet(); 
+           $loadedTweet->id = $row['id']; 
+           $loadedTweet->userId = $row['userId']; 
+           $loadedTweet->text = $row['text']; 
+           $loadedTweet->creationDate = $row['creationDate']; 
+           return $loadedTweet; 
+       }
+       return null; 
+    }
 }
