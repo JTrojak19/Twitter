@@ -77,4 +77,25 @@ class Tweet
         }
         return $ret; 
     }
+    static public function loadAllTweets(mysqli $connection)
+    {
+        $sql = "SELECT * FROM Tweet ORDER BY creationDate DESC";
+        $return = []; 
+        $result = $connection->query($sql); 
+        
+        if ($result == true && $result->num_rows>0)
+        {
+            foreach ($result as $row)
+            {
+                $allTweets = new Tweet(); 
+                $allTweets->id = $row['id']; 
+                $allTweets->userId = $row['id']; 
+                $allTweets->text = $row['text']; 
+                $allTweets->creationDate = $row['creationDate']; 
+                
+                $return[] = $allTweets; 
+            }
+        }
+        return $return; 
+    }
 }
