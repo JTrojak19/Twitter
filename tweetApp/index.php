@@ -8,9 +8,14 @@
 
     require_once "User.php";
     
-    //$newUser = new User();
-    //$newUser->setUsername('newUser');
-    //$newUser->saveToDB($mysqli);
+    if (!empty($_SESSION['userId']) && !empty($_SESSION['username']))
+    {
+        include_once 'main.php';
+    }
+    else 
+    {
+        include_once 'login.php'; 
+    }
 
     echo 'Witaj na stronie głównej <br><br>';
     echo "Jeśli jesteś zarejestrowanym użytkownikiem ". "<a href='login.php'>kliknij tutaj</a>";  
