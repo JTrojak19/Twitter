@@ -1,4 +1,5 @@
 <?php
+include_once 'User.php'; 
 if (isset($_POST['email']) && isset($_POST['password']))
 {
     $username = $_POST['email']; 

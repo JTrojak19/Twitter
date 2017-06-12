@@ -2,11 +2,11 @@
     session_start(); 
     require_once 'config.php';
     require_once 'db_conn.php';
-    session_start();
 
     require_once 'head.php';
 
     require_once "User.php";
+    include_once "newuser.php"; 
     
     if (!empty($_SESSION['userId']) && !empty($_SESSION['username']))
     {
@@ -15,7 +15,7 @@
     else 
     {
         include_once 'login.php'; 
-        include_once "newuser.php"; 
+        
     
     if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']))
     {
@@ -59,17 +59,13 @@
                                 }
                             }
                         }
-                var_dump($id); 
+                //var_dump($id); 
                     }       
                 }
                 $user = User::loadUserById($mysqli, $id); 
         }
     }
         
-    }
-    if (isset($_POST['logOut']) && isset($_SESSION['userId']))
-    {
-        unset($_SESION['userId']); 
     }
     
     $mysqli->close(); 
