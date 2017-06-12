@@ -1,7 +1,7 @@
 <?php
-if (isset($_POST['username']) && isset($_POST['password']))
+if (isset($_POST['email']) && isset($_POST['password']))
 {
-    $username = $_POST['username']; 
+    $username = $_POST['email']; 
     $password = $_POST['password']; 
     
     $sql = "SELECT * FROM Users"; 
@@ -11,7 +11,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
     {
         foreach ($result as $row)
         {
-            if ($row['username'] && password_verify($password, $row['hashed_password']))
+            if ($row['email'] && password_verify($password, $row['hashed_password']))
             {
                 $id = $row['id']; 
                 
@@ -21,14 +21,23 @@ if (isset($_POST['username']) && isset($_POST['password']))
                     $_SESSION['username'] = $username; 
                 }
             }
+            $user = User::loadUserById($mysqli, $id); 
         }
+    }
+    else if ($row['email']==$email && password_verify($password, $row['hashed_password']) == false)
+    {
+        echo "Błędne hasło"; 
+    }
+    else if ($row['email']!=$email && password_verify ($password, $row['hashed_password']) == false)
+    {
+        echo "Błędny email"; 
     }
 }
 ?>
 <html>
     <body>
         <form action="" method="post">
-            <input type="text" name="username" placeholder="username">
+            <input type="email" name="email" placeholder="email">
             <br>
             <br>
             <input type="password" name="password" placeholder="password">
