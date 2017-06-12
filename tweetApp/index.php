@@ -15,13 +15,7 @@
     else 
     {
         include_once 'login.php'; 
-    }
-
-    echo 'Witaj na stronie głównej <br><br>';
-    echo "Jeśli jesteś zarejestrowanym użytkownikiem ". "<a href='login.php'>kliknij tutaj</a>";  
-    require_once 'foot.php';
-    
-    require_once "newuser.php"; 
+        include_once "newuser.php"; 
     
     if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']))
     {
@@ -29,29 +23,57 @@
         $newEmail = $_POST['email']; 
         $newPassword = $_POST['password']; 
         
+        $sql = "SELECT email FROM Users"; 
+        $result = $mysqli->query($sql);
         
-        $newUser = new User(); 
-        $newUser->setUsername($newUsername); 
-        $newUser->setEmail($newEmail); 
-        $newUser->setPassword($newPassword); 
-        $newUser->saveToDB($mysqli); 
-            
-        $sql = "SELECT * FROM Users"; 
-        $result = $mysqli->query($sql); 
-        if ($result==true && $result->num_rows>0)
+        if ($result == true)
         {
-                foreach ($result as $row)
+            $row = $result->fetch_assoc(); 
+            if ($row['email'] == $newEmail)
+            {
+                echo "Podany email już istnieje w bazie"; 
+            }
+            else 
                 {
-                    if ($row['email']==$newEmail)
+        
+                    $newUser = new User(); 
+                    $newUser->setUsername($newUsername); 
+                    $newUser->setEmail($newEmail); 
+                    $newUser->setPassword($newPassword); 
+                    $newUser->saveToDB($mysqli); 
+            
+                    $sql = "SELECT * FROM Users"; 
+                    $result = $mysqli->query($sql); 
+                    if ($result==true && $result->num_rows>0)
                     {
-                        $id = $row['id']; 
-                        $name = $row['username']; 
-                    }
-                }
+                        foreach ($result as $row)
+                        {
+                            if ($row['email']==$newEmail)
+                            {
+                                $id = $row['id']; 
+                                $name = $row['username']; 
+                                if ($id > 0)
+                                {
+                                    $_SESSION['userId'] = $id; 
+                                    $_SESSION['username'] = $username; 
+                                }
+                            }
+                        }
                 var_dump($id); 
+                    }       
+                }
+                $user = User::loadUserById($mysqli, $id); 
         }
-        $user = User::loadUserById($mysqli, $id); 
+    }
         
     }
+    if (isset($_POST['logOut']) && isset($_SESSION['userId']))
+    {
+        unset($_SESION['userId']); 
+    }
+    
+    $mysqli->close(); 
+    $mysqli = null; 
+    //require_once 'foot.php';
     
 ?>
