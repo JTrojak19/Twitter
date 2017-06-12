@@ -39,6 +39,10 @@ class Tweet
     {
         return $this->userId; 
     }
+    public function setUserId()
+    {
+        $this->userId = $userId; 
+    }
     static public function loadTweetById(mysqli $connection, $id)
     {
        $sql = "SELECT * FROM Tweet WHERE id=$id"; 
@@ -103,7 +107,7 @@ class Tweet
         if ($this->id==-1)
         {
             $sql = "INSERT INTO Tweet(userId, text, creationDate) VALUES('$this->userId', '$this->text', '$this->creationDate')"; 
-            $result = $conection->query($sql); 
+            $result = $connection->query($sql); 
             
             if ($result == true)
             {

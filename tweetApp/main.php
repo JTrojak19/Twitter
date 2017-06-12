@@ -22,20 +22,21 @@ require_once 'Tweet.php';
     if (isset($_POST['tweet']))
     {
         $newText = $_POST['tweet']; 
-        $sql = "SELECT text FROM Posts WHERE userI=$userId"; 
+        var_dump($newText); 
+        $sql = "SELECT text FROM Posts WHERE userId=$userId"; 
         $result = $mysqli->query($sql); 
         
         if ($result == true && $result->num_rows > 0)
         {
             if ($row=$result->fetch_assoc())
             {
-                if ($row['text'] != $newText && $newText != "")
+                if ($row['text']!= $newText && $newText != "")
                 {
                     $date = "NOW()"; 
                     $newTweet = new Tweet(); 
+                    $newTweet->setUserId($userId); 
                     $newTweet->setText($newText);
                     $newTweet->setCreationDate($date); 
-                    $newTweet->setUserId($userId); 
                     $newTweet->saveToDB($mysqli); 
                 }
                 
@@ -46,9 +47,9 @@ require_once 'Tweet.php';
                 {
                     $date = "NOW()"; 
                     $newTweet = new Tweet(); 
+                    $newTweet->setUserId($userId); 
                     $newTweet->setText($newText);
                     $newTweet->setCreationDate($date); 
-                    $newTweet->setUserId($userId); 
                     $newTweet->saveToDB($mysqli);
                 }
             }
