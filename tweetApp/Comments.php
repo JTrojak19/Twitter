@@ -53,7 +53,7 @@ class Comment
        return $this->text; 
    }
    
-   static public function loadCommentById(mysqli $connection, $id)
+   static public function loadCommentsById(mysqli $connection, $id)
    {
        $sql = "SELECT * FROM Comments WHERE id=$id"; 
        $result = $connection->query($sql); 
@@ -70,5 +70,27 @@ class Comment
            return $loadedComment; 
        }
        return null; 
+   }
+   static public function loadCommentsByPostId(mysqli $connection, $Id_postu)
+   {
+       $sql = "SELECT * FROM Comments WHERE Id_postu = $Id_postu"; 
+       $result = $connection->query($sql); 
+       $ret = []; 
+       
+       if ($result == true && $result->num_rows > 0)
+       {
+           foreach ($result as $row)
+           {
+               $postComment = new Comment(); 
+               $postComment->id = $row['id']; 
+               $postComment->Id_usera = $row['Id_usera']; 
+               $postComment->Id_postu  = $row['Id_postu']; 
+               $postComment->Creation_date = $row['Creation_date']; 
+               $postComment->text = $row['text']; 
+               
+               $ret[] = $postComment; 
+           }
+       }
+       return $ret; 
    }
 }
