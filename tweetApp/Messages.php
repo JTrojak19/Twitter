@@ -66,5 +66,28 @@ class Message
         return $this->status; 
     }
     
+    public function loadMessagesBySender(mysqli $connection, $senderId)
+    {
+        $sql = "SELECT * FROM Messages WHERE senderId=$senderId"; 
+        $messages = []; 
+        $result = $connection->query($sql); 
+        
+        if ($result == true && $result->num_rows> 0)
+        {
+            foreach ($result as $row)
+            {
+                $loadedMessage = new Message(); 
+                $loadedMessage->id = $row['id']; 
+                $loadedMessage->senderId = $row['senderId']; 
+                $loadedMessage->receiverId = $row['receiverId']; 
+                $loadedMessage->creationDate = $row['creationDate']; 
+                $loadedMessage->text = $row['text']; 
+                $loadedMessage->status = $row['status']; 
+                $messages[] = $loadedMessage; 
+            }
+        }
+        return $loadedMessage; 
+    }
+    
     
 }
