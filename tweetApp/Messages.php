@@ -5,7 +5,8 @@ class Message
     private $senderId; 
     private $receiverId; 
     private $creationDate; 
-    private $text; 
+    private $text;
+    private $status; 
     
     public function __construct()
     {
@@ -14,6 +15,7 @@ class Message
         $this->receiverId = ""; 
         $this->creationDate = ""; 
         $this->text = ""; 
+        $this->status = "6"; 
     }
     
     public function getId()
@@ -51,6 +53,17 @@ class Message
     public function getText()
     {
         return $this->text; 
+    }
+    public function setStatus($status)
+    {
+        if (is_numeric($status))
+        {
+            $this->status = $status; 
+        }
+    }
+    public function getStatus()
+    {
+        return $this->status; 
     }
     
     
