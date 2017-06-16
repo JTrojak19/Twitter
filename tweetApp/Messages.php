@@ -111,6 +111,22 @@ class Message
         }
         return $result; 
     }
-    
+    public function saveToDB($connection)
+    {
+        if ($this->id = -1)
+        {
+            $sql = "INSERT INTO Messeges(senderId, receiverId, creationDate, text, status) VALUES ('$this->senderId', '$this->receiv            erId' '$this->creationDate', '$this->text', '$this->status')"; 
+            $result = $connection->query($sql); 
+            if ($result == true)
+            {
+                $this->id = $connection->insert_id; 
+                return true; 
+            }
+            else 
+            {
+                return false; 
+            }
+        }
+    }
     
 }
