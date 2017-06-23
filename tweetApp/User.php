@@ -14,7 +14,7 @@ class User {
             $loadedUser = new User();
             $loadedUser->id = $row['id'];
             $loadedUser->username = $row['username'];
-            $loadedUser->hashedPassword = $row['hashed_password'];
+            $loadedUser->hashedPassword = $row['hashed_Password'];
             $loadedUser->email = $row['email'];
             return $loadedUser;
         }
@@ -29,7 +29,7 @@ class User {
                 $loadedUser = new User();
                 $loadedUser->id = $row['id'];
                 $loadedUser->username = $row['username'];
-                $loadedUser->hashedPassword = $row['hashed_password'];
+                $loadedUser->hashedPassword = $row['hashed_Password'];
                 $loadedUser->email = $row['email'];
                 $ret[] = $loadedUser;
             }
@@ -45,7 +45,7 @@ class User {
     public function saveToDB($connection){
         if($this->id==-1){
             if($this->id == -1){
-            $sql = "INSERT INTO Users(username, email, hashed_password)
+            $sql = "INSERT INTO Users(username, email, hashed_Password)
                 VALUES ('$this->username', '$this->email', '$this->hashedPassword')";
             $result = $connection->query($sql);
             if($result == true){
@@ -59,7 +59,7 @@ class User {
                 UPDATE Users SET
                     username='$this->username',
                     email='$this->email',
-                    hashed_password='$this->hashedPassword'
+                    hashed_Password='$this->hashedPassword'
                 WHERE
                     id=$this->id";
             $result = $connection->query($sql);

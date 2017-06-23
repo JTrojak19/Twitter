@@ -12,7 +12,7 @@ if (isset($_POST['email']) && isset($_POST['password']))
     {
         foreach ($result as $row)
         {
-            if ($row['email'] && password_verify($password, $row['hashed_password']))
+            if ($row['email'] && password_verify($password, $row['hashed_Password']))
             {
                 $id = $row['id']; 
                 
@@ -25,11 +25,11 @@ if (isset($_POST['email']) && isset($_POST['password']))
             $user = User::loadUserById($mysqli, $id); 
         }
     }
-    else if ($row['email']==$email && password_verify($password, $row['hashed_password']) == false)
+    else if ($row['email']==$email && password_verify($password, $row['hashed_Password']) == false)
     {
         echo "Błędne hasło"; 
     }
-    else if ($row['email']!=$email && password_verify ($password, $row['hashed_password']) == false)
+    else if ($row['email']!=$email && password_verify ($password, $row['hashed_Password']) == false)
     {
         echo "Błędny email"; 
     }
