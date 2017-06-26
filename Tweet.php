@@ -39,7 +39,7 @@ class Tweet
     {
         return $this->userId; 
     }
-    public function setUserId()
+    public function setUserId($userId)
     {
         $this->userId = $userId; 
     }

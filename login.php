@@ -1,5 +1,6 @@
 <?php
 include_once 'User.php'; 
+include_once 'db_conn.php'; 
 if (isset($_POST['email']) && isset($_POST['password']))
 {
     $username = $_POST['email']; 
@@ -23,6 +24,7 @@ if (isset($_POST['email']) && isset($_POST['password']))
                 }
             }
             $user = User::loadUserById($mysqli, $id); 
+            var_dump($user); 
         }
     }
     else if ($row['email']==$email && password_verify($password, $row['hashed_Password']) == false)

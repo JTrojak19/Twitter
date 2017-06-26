@@ -7,6 +7,7 @@
 
     require_once "User.php";
     include_once "newuser.php"; 
+    include_once 'main.php';
     
     if (!empty($_SESSION['userId']) && !empty($_SESSION['username']))
     {
@@ -15,7 +16,7 @@
     else 
     {
         include_once 'login.php'; 
-        
+    
     
     if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']))
     {
@@ -65,7 +66,11 @@
                 $user = User::loadUserById($mysqli, $id); 
         }
     }
-        
+    }    
+    
+    if (isset($_POST['logOut']) && isset($_SESSION['userId']))
+    {
+        unset($_SESSION['userId']); 
     }
     
     $mysqli->close(); 

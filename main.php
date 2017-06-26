@@ -1,12 +1,15 @@
 <?php
+require_once 'index.php';
 echo '<h3>'.$_SESSION['username']. ' witaj na stronie głównej!</h3>'; 
 require_once 'Tweet.php';
 ?>
 <html>
     <body>
-        <form action="index.php" method="post">
-            <button type="submit" name="logOut">Wyloguj się</button>
+        <form action="index.php" method="posy">
+            <input type="submit" name="logOut" value="Log Out">
         </form>
+        <br>
+        <br>
         <h1>Tweetnij</h1>
         <form action="" method="post">
             <textarea name="tweet" rows="3" cols="50"></textarea>
@@ -16,44 +19,23 @@ require_once 'Tweet.php';
         </form>
     </body>
     <?php
+    include_once 'db_conn.php';
+    include_once 'Tweet.php';
     $userId = $_SESSION['userId']; 
     $newText = ''; 
     
     if (isset($_POST['tweet']))
     {
         $newText = $_POST['tweet']; 
-        var_dump($newText); 
-        $sql = "SELECT text FROM Posts WHERE userId=$userId"; 
-        $result = $mysqli->query($sql); 
+        //var_dump($newText); 
         
-        if ($result == true && $result->num_rows > 0)
-        {
-            if ($row=$result->fetch_assoc())
-            {
-                if ($row['text']!= $newText && $newText != "")
-                {
-                    $date = "NOW()"; 
-                    $newTweet = new Tweet(); 
-                    $newTweet->setUserId($userId); 
-                    $newTweet->setText($newText);
-                    $newTweet->setCreationDate($date); 
-                    $newTweet->saveToDB($mysqli); 
-                }
-                
-            }
-            else if ($result->num_rows == null)
-            {
-                if ($newText != "")
-                {
-                    $date = "NOW()"; 
-                    $newTweet = new Tweet(); 
-                    $newTweet->setUserId($userId); 
-                    $newTweet->setText($newText);
-                    $newTweet->setCreationDate($date); 
-                    $newTweet->saveToDB($mysqli);
-                }
-            }
-        }
+        $date = time(); 
+        $Tweet = new Tweet; 
+        $Tweet->setText($newText); 
+        $Tweet->setCreationDate($date); 
+        $Tweet->setUserId($userId); 
+        //var_dump($Tweet); 
+        $Tweet->saveToDB($mysqli); 
     }
     ?>
 </html>
