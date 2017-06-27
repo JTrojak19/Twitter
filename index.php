@@ -3,13 +3,13 @@
     session_start(); 
     
     require_once 'db_conn.php';
+    require_once 'header.php'; 
     require_once 'User.php';
     require_once 'Tweet.php'; 
     require_once 'Comments.php'; 
     require_once 'Messages.php';
      
-    echo "<h1>Welcome to my Twitter App!</h1>"; 
-    echo "<p>This app was created in order to mimic Twitter functionality</p>"; 
+    echo '<div id="header">'; 
     
     if (isset($_GET['page']) && isset($_GET['page']) === 'logout')// end session 
     {
@@ -47,5 +47,7 @@
     {
         include 'newuser.php'; 
     }
+    
+    echo "</div>"; 
     
     
