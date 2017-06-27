@@ -1,80 +1,51 @@
 <?php
-    session_start(); 
     require_once 'config.php';
-    require_once 'db_conn.php';
-
-    require_once 'head.php';
-
-    require_once "User.php";
-    include_once "newuser.php"; 
-    include_once 'main.php';
+    session_start(); 
     
-    if (!empty($_SESSION['userId']) && !empty($_SESSION['username']))
+    require_once 'db_conn.php';
+    require_once 'User.php';
+    require_once 'Tweet.php'; 
+    require_once 'Comments.php'; 
+    require_once 'Messages.php';
+     
+    echo "<h1>Welcome to my Twitter App!</h1>"; 
+    echo "<p>This app was created in order to mimic Twitter functionality</p>"; 
+    
+    if (isset($_GET['page']) && isset($_GET['page']) === 'logout')// end session 
     {
-        include_once 'main.php';
+        unset($_SESSION['username']); 
+        unset($_SESSION['email']); 
+        unset($_SESSION['userId']); 
+        header('refres: 1; index.php'); 
+    }
+    
+    if (!isset($_SESSION['username']))
+    {
+        echo "To view Tweets you must be logged in"; 
     }
     else 
     {
-        include_once 'login.php'; 
-    
-    
-    if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']))
-    {
-        $newUsername = $_POST['username']; 
-        $newEmail = $_POST['email']; 
-        $newPassword = $_POST['password']; 
-        
-        $sql = "SELECT email FROM Users"; 
-        $result = $mysqli->query($sql);
-        
-        if ($result == true)
+        if (isset($_GET['page']) && isset($_GET['page']) === 'profile')
         {
-            $row = $result->fetch_assoc(); 
-            if ($row['email'] == $newEmail)
-            {
-                echo "Podany email już istnieje w bazie"; 
-            }
-            else 
-                {
-        
-                    $newUser = new User(); 
-                    $newUser->setUsername($newUsername); 
-                    $newUser->setEmail($newEmail); 
-                    $newUser->setPassword($newPassword); 
-                    $newUser->saveToDB($mysqli); 
-            
-                    $sql = "SELECT * FROM Users"; 
-                    $result = $mysqli->query($sql); 
-                    if ($result==true && $result->num_rows>0)
-                    {
-                        foreach ($result as $row)
-                        {
-                            if ($row['email']==$newEmail)
-                            {
-                                $id = $row['id']; 
-                                $name = $row['username']; 
-                                if ($id > 0)
-                                {
-                                    $_SESSION['userId'] = $id; 
-                                    $_SESSION['username'] = $username; 
-                                }
-                            }
-                        }
-                //var_dump($id); 
-                    }       
-                }
-                $user = User::loadUserById($mysqli, $id); 
+            include 'profile.php'; 
+        }
+        elseif (isset ($_GET['page']) && isset ($_GET['page']) === 'messages') 
+        {
+            include 'messagematrix.php';
+        }
+        else 
+        {
+            require_once 'tweetmatrix.php';
         }
     }
-    }    
     
-    if (isset($_POST['logOut']) && isset($_SESSION['userId']))
+    if (isset($_GET['page']) && isset($_GET['page']) === 'login')
     {
-        unset($_SESSION['userId']); 
+        include 'login.php'; 
+    }
+    if (isset($_GET['page']) && isset($_GET['page']) === 'register')
+    {
+        include 'newuser.php'; 
     }
     
-    $mysqli->close(); 
-    $mysqli = null; 
-    //require_once 'foot.php';
     
-?>
