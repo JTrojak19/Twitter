@@ -4,6 +4,7 @@
         
     </head>
     <body>
+        <h1>Welcome to my Twitter App!</h1>
         <?php
         if (!isset($_SESSION['username']))
         {
