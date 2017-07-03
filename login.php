@@ -1,52 +1,44 @@
 <?php
-include_once 'User.php'; 
-include_once 'db_conn.php'; 
-if (isset($_POST['email']) && isset($_POST['password']))
+require_once 'User.php';
+
+echo '<form action="" method="post">
+<input type="email" name="email"><br>
+<input tyep="password" name="password"><br><br>
+<input type="submit" value="Log In">
+</form>';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
-    $username = $_POST['email']; 
-    $password = $_POST['password']; 
-    
-    $sql = "SELECT * FROM Users"; 
-    $result = $mysqli->query($sql); 
-    
-    if ($result == true && $result->num_rows>0)
+  if (!empty($_POST['email']) && !empty($_POST['password']))
+  {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $user = User::loadUserByEmail($conn, $email);
+
+    if (password_verify($password, $user->getHashPass()))
     {
-        foreach ($result as $row)
-        {
-            if ($row['email'] && password_verify($password, $row['hashed_Password']))
-            {
-                $id = $row['id']; 
-                
-                if ($id>0)
-                {
-                    $_SESSION['userId'] = $id; 
-                    $_SESSION['username'] = $username; 
-                }
-            }
-            $user = User::loadUserById($mysqli, $id); 
-            var_dump($user); 
-        }
+      $_SESSION['username'] = $user->getUsername();
+      $_SESSION['useremail'] = $user->getUsername();
+      $_SESSION['userId'] = $user->getUserid();
+      header('refresh: 1; index.php');
     }
-    else if ($row['email']==$email && password_verify($password, $row['hashed_Password']) == false)
+    else
     {
-        echo "Błędne hasło"; 
+      echo "Incorrect password or e-mail<br>";
     }
-    else if ($row['email']!=$email && password_verify ($password, $row['hashed_Password']) == false)
+  }
+  else
+  {
+    echo "Please fill in all the data/ You've missed the following fields:<br>";
+    if (empty($_POST['email']))
     {
-        echo "Błędny email"; 
+      echo "Email address<br>";
     }
+    if (empty($_POST['password']))
+    {
+      echo "Password<br>";
+    }
+  }
 }
 ?>
-<html>
-    <body>
-        <form action="" method="post">
-            <input type="email" name="email" placeholder="email">
-            <br>
-            <br>
-            <input type="password" name="password" placeholder="password">
-            <br>
-            <br>
-            <input type="submit" value="Log in">
-        </form>
-    </body>
-</html>
