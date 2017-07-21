@@ -45,8 +45,8 @@ class User {
     public function saveToDB($connection){
         if($this->id==-1){
             if($this->id == -1){
-            $sql = "INSERT INTO Users(username, email, hashed_Password)
-                VALUES ('$this->username', '$this->email', '$this->hashedPassword')";
+            $sql = "INSERT INTO Users(email, username, hashed_Password)
+                VALUES ('$this->email', '$this->username', '$this->hashedPassword')";
             $result = $connection->query($sql);
             if($result == true){
                 $this->id = $connection->insert_id;
@@ -100,4 +100,3 @@ class User {
         return true;
     }
 }
-?>

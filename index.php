@@ -16,7 +16,7 @@
         unset($_SESSION['username']);
         unset($_SESSION['email']);
         unset($_SESSION['userId']);
-        header('refres: 1; index.php');
+        header('refresh: 1; index.php');
     }
 
     if (!isset($_SESSION['username']))
