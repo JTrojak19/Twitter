@@ -115,7 +115,7 @@ class Message
     {
         if ($this->id = -1)
         {
-            $sql = "INSERT INTO Messeges(senderId, receiverId, creationDate, text, status) VALUES ('$this->senderId', '$this->receiv            erId' '$this->creationDate', '$this->text', '$this->status')"; 
+            $sql = "INSERT INTO Messages(senderId, receiverId, creationDate, opened, message) VALUES ('$this->senderId', '$this->receiverId' '$this->creationDate', '$this->text', '$this->status')"; 
             $result = $connection->query($sql); 
             if ($result == true)
             {

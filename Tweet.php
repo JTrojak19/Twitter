@@ -17,7 +17,7 @@ class Tweet
     
     public function setText($text)
     {
-        $this->text = $text; 
+        $this->text=$text; 
     }
     public function getText()
     {
@@ -25,9 +25,9 @@ class Tweet
     }
     public function setCreationDate($creationDate)
     {
-        $this->creationDate = $creationDate; 
+        $this->creationDate=$creationDate; 
     }
-    public function getCreationDate($creationDate)
+    public function getCreationDate()
     {
         return $this->creationDate; 
     }
@@ -45,7 +45,7 @@ class Tweet
     }
     static public function loadTweetById(mysqli $connection, $id)
     {
-       $sql = "SELECT * FROM Tweet WHERE id=$id"; 
+       $sql = "SELECT * FROM Tweets WHERE id=$id"; 
        $result = $connection->query($sql); 
        
        if ($result==true && $result->num_rows == 1)
@@ -62,7 +62,7 @@ class Tweet
     }
     static public function loadAllTweetsByUserID(mysqli $connection, $userId)
     {
-        $sql = "SELECT * FROM Tweet WHERE userId = $userId"; 
+        $sql = "SELECT * FROM Tweets WHERE userId = $userId"; 
         $result = $connection->query($sql); 
         $ret = []; 
         
@@ -83,7 +83,7 @@ class Tweet
     }
     static public function loadAllTweets(mysqli $connection)
     {
-        $sql = "SELECT * FROM Tweet ORDER BY creationDate DESC";
+        $sql = "SELECT * FROM Tweets ORDER BY creationDate DESC";
         $return = []; 
         $result = $connection->query($sql); 
         
@@ -106,7 +106,7 @@ class Tweet
     {
         if ($this->id==-1)
         {
-            $sql = "INSERT INTO Tweet(userId, text, creationDate) VALUES('$this->userId', '$this->text', '$this->creationDate')"; 
+            $sql = "INSERT INTO Tweets(userId, text, creationDate) VALUES('$this->userId', '$this->text', '$this->creationDate')"; 
             $result = $connection->query($sql); 
             
             if ($result == true)

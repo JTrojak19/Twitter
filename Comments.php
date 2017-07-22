@@ -97,7 +97,7 @@ class Comment
    {
        if ($this->id==-1)
        {
-           $sql = "INSERT INTO Comments(Id_usera, Id_postu, Creation_date, text) VALUES('$this->Id_usera', '$this->Id_postu, $this->           Creation_date, $this->text)"; 
+           $sql = "INSERT INTO Comments(userId, postId, creationDate, text) VALUES('$this->Id_usera', '$this->Id_postu, '$this->Creation_date', '$this->text')"; 
            $result = $connection->query($sql); 
            
            if ($result == true)

@@ -11,7 +11,7 @@ echo '<form action="" method="post">
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
-  if (!empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['pass']) !empty($_POST['pass2']))
+  if (!empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['pass']) && !empty($_POST['pass2']))
   {
     $email = $_POST['email'];
     $name = $_POST['username'];

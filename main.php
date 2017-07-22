@@ -5,7 +5,7 @@ require_once 'Tweet.php';
 ?>
 <html>
     <body>
-        <form action="index.php" method="posy">
+        <form action="index.php" method="post">
             <input type="submit" name="logOut" value="Log Out">
         </form>
         <br>
