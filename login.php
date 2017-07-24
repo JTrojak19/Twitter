@@ -3,7 +3,7 @@ require_once 'User.php';
 
 echo '<form action="" method="post">
 <input type="email" name="email"><br>
-<input tyep="password" name="password"><br><br>
+<input type="password" name="password"><br><br>
 <input type="submit" value="Log In">
 </form>';
 

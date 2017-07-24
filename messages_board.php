@@ -22,7 +22,9 @@ $allUsers = User::loadAllUsers($conn);
        {
          if ($allUsers[$i]->getUserid() !==$userId)
          {
-           echo '<option value=""'.allUsers[$i]->getUserid().'">'.$allUsers[$i]->getUsername().' ('.$allUsers[$i]->getEmail().')</option>';
+           echo "<option value''"; 
+           echo $loadedUser->getUsername(); 
+           echo "</option>"; 
          }
        }
         ?>

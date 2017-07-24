@@ -22,9 +22,9 @@ if (isset($_SESSION['useremail']))
 <html>
     <body>
         <form action="" method="post">
-            <button type="submit" name="page" value="changePass">You can change your password here</button>
-            <button type="submit" name="page" value="changeUsr">You can change your username here</button>
-            <button type="submit" name="page" value="changemail">You can change your email here</button>
+            <button type="submit" name="page" value="changePass">change your password</button>
+            <button type="submit" name="page" value="changeUsr">change your username </button>
+            <button type="submit" name="page" value="changemail">change your email </button>
         </form>
     </body>
 </html>
