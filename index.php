@@ -1,51 +1,34 @@
 <?php
-    require_once 'config.php';
-    session_start();
-
-    require_once 'db_conn.php';
-    require_once 'header.php';
-    require_once 'User.php';
-    require_once 'Tweet.php';
-    require_once 'Comments.php';
-    require_once 'Messages.php';
-
-    echo '<div id="header">';
-
-    if (isset($_GET['page']) && isset($_GET['page']) === 'logout')// end session
-    {
-        unset($_SESSION['username']);
-        unset($_SESSION['email']);
-        unset($_SESSION['userId']);
-        header('refresh: 1; index.php');
-    }
-
-    if (!isset($_SESSION['username']))
-    {
-        echo "To view Tweets you must be logged in";
-    }
-    else
-    {
-        if (isset($_GET['page']) && isset($_GET['page']) === 'profile')
-        {
-            include 'profile.php';
-        }
-        elseif (isset ($_GET['page']) && isset ($_GET['page']) === 'messages')
-        {
-            include 'message_board.php';
-        }
-        else
-        {
-            require_once 'tweet_board.php';
-        }
-    }
-
-    if (isset($_GET['page']) && isset($_GET['page']) === 'login')
-    {
-        include 'login.php';
-    }
-    if (isset($_GET['page']) && isset($_GET['page']) === 'register')
-    {
-        include 'newuser.php';
-    }
-
-    echo "</div>";
+/**
+ * Created by PhpStorm.
+ * User: joanna
+ * Date: 22.08.17
+ * Time: 10:10
+ */
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Twitter App</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="register.php">Register</a></li>
+            <li><a href="login.php">Login</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+</div>
+</body>
+</html>
