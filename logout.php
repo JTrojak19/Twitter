@@ -2,12 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: joanna
- * Date: 23.08.17
- * Time: 18:05
+ * Date: 24.08.17
+ * Time: 15:50
  */
 session_start();
 include "config.php";
-include "class/User.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,16 +27,19 @@ include "class/User.php";
             <li class="active"><a href="#">Main</a></li>
             <li><a href="register.php">Messages</a></li>
             <li><a href="login.php">Settings</a></li>
-            <li><a href="logout.php">Log Out</a></li>
+            <li class="active"><a href="#">Log Out</a></li>
         </ul>
     </div>
 </nav>
 <div class="container">
     <?php
-    echo "<h2>";
-    echo "Witaj na stronie głównej, ";
-    echo $_SESSION['username'];
-    echo "</h2>";
+    if (isset($_SESSION['username']) && isset($_SESSION['userId']))
+    {
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+        exit();
+    }
     ?>
 </div>
 </body>
