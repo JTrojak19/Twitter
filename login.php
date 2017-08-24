@@ -61,7 +61,9 @@ include "class/User.php";
             {
                 $userId = $users[$i]->getId();
                 $_SESSION['userId'] = $userId;
+                $_SESSION['username'] = $userEmail;
                 header("Location: main.php");
+                exit();
             }
             else
             {
