@@ -5,7 +5,6 @@
  * Date: 25.08.17
  * Time: 09:41
  */
-$mysqli = new mysqli('localhost', 'root', 'coderslab', 'Twitter');
 class Tweet
 {
     private $id;
@@ -102,5 +101,28 @@ class Tweet
         }
         return null;
     }
+    static public function loadAllTweets(mysqli $connection)
+    {
+        $sql = "SELECT * FROM Tweets";
+        $ret = [];
+        $result = $connection->query($sql);
+
+        if ($result == true && $result->num_rows > 0)
+        {
+            foreach ($result as $row)
+            {
+                $loadedTweet = new Tweet();
+                $loadedTweet->id = $row['id'];
+                $loadedTweet->userId = $row['userId'];
+                $loadedTweet->text = $row['text'];
+                $loadedTweet->creationDate = $row['creationDate'];
+
+                $ret[] = $loadedTweet;
+            }
+            return $ret;
+        }
+        return null;
+    }
 }
+
 
