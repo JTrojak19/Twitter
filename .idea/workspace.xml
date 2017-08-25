@@ -49,22 +49,14 @@
         <entry file="file://$PROJECT_DIR$/class/Tweet.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
-              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding>
-                <marker date="1503655808762" expanded="true" signature="1089:1196" ph="INSERT INTO Tweets... " />
-                <marker date="1503655808762" expanded="true" signature="1520:1552" ph="SELECT * FRO... Tweets" />
-                <marker date="1503655808762" expanded="true" signature="1520:1555" ph="SELECT FROM Tweets... " />
+                <marker date="1503657164638" expanded="true" signature="1089:1196" ph="INSERT INTO Tweets... " />
+                <marker date="1503657164638" expanded="true" signature="1520:1552" ph="SELECT * FRO... Tweets" />
+                <marker date="1503657164638" expanded="true" signature="1520:1555" ph="SELECT FROM Tweets... " />
+                <marker date="1503657164638" expanded="true" signature="2110:2146" ph="SELECT * FRO... Tweets" />
+                <marker date="1503657164638" expanded="true" signature="2110:2147" ph="SELECT * FRO... Tweets" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/351fe260-ede3-403d-8086-4664311f2a85/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -72,15 +64,15 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="82" column="25" lean-forward="false" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+            <state relative-caret-position="-255">
+              <caret line="100" column="25" lean-forward="false" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
               <folding>
-                <marker date="1503655769742" expanded="true" signature="1229:1346" ph="INSERT INTO Users... " />
-                <marker date="1503655769742" expanded="true" signature="1619:1786" ph="UPDATE Users... " />
-                <marker date="1503655769742" expanded="true" signature="2066:2097" ph="SELECT FROM Users... " />
-                <marker date="1503655769742" expanded="true" signature="2656:2688" ph="SELECT FROM Users... " />
-                <marker date="1503655769742" expanded="true" signature="3247:3266" ph="SELECT * FRO... Users" />
-                <marker date="1503655769742" expanded="true" signature="3920:3949" ph="DELETE FROM " />
+                <marker date="1503655916590" expanded="true" signature="1229:1346" ph="INSERT INTO Users... " />
+                <marker date="1503655916590" expanded="true" signature="1619:1786" ph="UPDATE Users... " />
+                <marker date="1503655916590" expanded="true" signature="2066:2097" ph="SELECT FROM Users... " />
+                <marker date="1503655916590" expanded="true" signature="2656:2690" ph="SELECT FROM Users... " />
+                <marker date="1503655916590" expanded="true" signature="3249:3268" ph="SELECT * FRO... Users" />
+                <marker date="1503655916590" expanded="true" signature="3922:3951" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -97,8 +89,8 @@
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/main.php" />
         <option value="$PROJECT_DIR$/logout.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/351fe260-ede3-403d-8086-4664311f2a85/console.sql" />
         <option value="$PROJECT_DIR$/class/User.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/351fe260-ede3-403d-8086-4664311f2a85/console.sql" />
         <option value="$PROJECT_DIR$/class/Tweet.php" />
       </list>
     </option>
@@ -178,12 +170,12 @@
       <option name="presentableId" value="Default" />
       <updated>1503579905720</updated>
       <workItem from="1503579909504" duration="3541000" />
-      <workItem from="1503645837245" duration="6134000" />
+      <workItem from="1503645837245" duration="7485000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9675000" />
+    <option name="totallyTimeSpent" value="11026000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="44" width="1177" height="614" extended-state="6" />
@@ -249,12 +241,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1503655769742" expanded="true" signature="1229:1346" ph="INSERT INTO Users... " />
-            <marker date="1503655769742" expanded="true" signature="1619:1786" ph="UPDATE Users... " />
-            <marker date="1503655769742" expanded="true" signature="2066:2097" ph="SELECT FROM Users... " />
-            <marker date="1503655769742" expanded="true" signature="2656:2688" ph="SELECT FROM Users... " />
-            <marker date="1503655769742" expanded="true" signature="3247:3266" ph="SELECT * FRO... Users" />
-            <marker date="1503655769742" expanded="true" signature="3920:3949" ph="DELETE FROM " />
+            <marker date="1503655916590" expanded="true" signature="1229:1346" ph="INSERT INTO Users... " />
+            <marker date="1503655916590" expanded="true" signature="1619:1786" ph="UPDATE Users... " />
+            <marker date="1503655916590" expanded="true" signature="2066:2097" ph="SELECT FROM Users... " />
+            <marker date="1503655916590" expanded="true" signature="2656:2690" ph="SELECT FROM Users... " />
+            <marker date="1503655916590" expanded="true" signature="3249:3268" ph="SELECT * FRO... Users" />
+            <marker date="1503655916590" expanded="true" signature="3922:3951" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
@@ -309,22 +301,22 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/351fe260-ede3-403d-8086-4664311f2a85/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+          <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/class/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="82" column="25" lean-forward="false" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+        <state relative-caret-position="-255">
+          <caret line="100" column="25" lean-forward="false" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
           <folding>
-            <marker date="1503655769742" expanded="true" signature="1229:1346" ph="INSERT INTO Users... " />
-            <marker date="1503655769742" expanded="true" signature="1619:1786" ph="UPDATE Users... " />
-            <marker date="1503655769742" expanded="true" signature="2066:2097" ph="SELECT FROM Users... " />
-            <marker date="1503655769742" expanded="true" signature="2656:2688" ph="SELECT FROM Users... " />
-            <marker date="1503655769742" expanded="true" signature="3247:3266" ph="SELECT * FRO... Users" />
-            <marker date="1503655769742" expanded="true" signature="3920:3949" ph="DELETE FROM " />
+            <marker date="1503655916590" expanded="true" signature="1229:1346" ph="INSERT INTO Users... " />
+            <marker date="1503655916590" expanded="true" signature="1619:1786" ph="UPDATE Users... " />
+            <marker date="1503655916590" expanded="true" signature="2066:2097" ph="SELECT FROM Users... " />
+            <marker date="1503655916590" expanded="true" signature="2656:2690" ph="SELECT FROM Users... " />
+            <marker date="1503655916590" expanded="true" signature="3249:3268" ph="SELECT * FRO... Users" />
+            <marker date="1503655916590" expanded="true" signature="3922:3951" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
@@ -332,11 +324,13 @@
     <entry file="file://$PROJECT_DIR$/class/Tweet.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding>
-            <marker date="1503655808762" expanded="true" signature="1089:1196" ph="INSERT INTO Tweets... " />
-            <marker date="1503655808762" expanded="true" signature="1520:1552" ph="SELECT * FRO... Tweets" />
-            <marker date="1503655808762" expanded="true" signature="1520:1555" ph="SELECT FROM Tweets... " />
+            <marker date="1503657164638" expanded="true" signature="1089:1196" ph="INSERT INTO Tweets... " />
+            <marker date="1503657164638" expanded="true" signature="1520:1552" ph="SELECT * FRO... Tweets" />
+            <marker date="1503657164638" expanded="true" signature="1520:1555" ph="SELECT FROM Tweets... " />
+            <marker date="1503657164638" expanded="true" signature="2110:2146" ph="SELECT * FRO... Tweets" />
+            <marker date="1503657164638" expanded="true" signature="2110:2147" ph="SELECT * FRO... Tweets" />
           </folding>
         </state>
       </provider>

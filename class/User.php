@@ -98,7 +98,7 @@ class User
     }
     static public function loadUserByEmail(mysqli $connection, $email)
     {
-        $sql = "SELECT FROM Users WHERE email = $email";
+        $sql = "SELECT * FROM Users WHERE email = $email";
         $result = $connection->query($sql);
 
         if ($result == true && $result->num_rows == 1)

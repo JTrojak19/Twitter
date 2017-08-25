@@ -80,5 +80,27 @@ class Tweet
         }
         return null;
     }
+    static public function loadTweetsByUserId(mysqli $connection, $userId)
+    {
+        $sql = "SELECT * FROM Tweets WHERE userId = $userId";
+        $result = $connection->query($sql);
+        $ret = [];
+
+        if ($result == true && $result->num_rows > 0)
+        {
+            foreach ($result as $row)
+            {
+                $loadedTweet = new Tweet();
+                $loadedTweet->id = $row['id'];
+                $loadedTweet->userId = $row['userId'];
+                $loadedTweet->text = $row['text'];
+                $loadedTweet->creationDate = $row['creationDate'];
+
+                $ret[] = $loadedTweet;
+            }
+            return $ret;
+        }
+        return null;
+    }
 }
 
