@@ -80,7 +80,7 @@ class User
     }
     static public function loadUserById(mysqli $connection, $id)
     {
-        $sql = "SELECT FROM Users WHERE id = $id";
+        $sql = "SELECT * FROM Users WHERE id = $id";
         $result = $connection->query($sql);
 
         if ($result == true && $result->num_rows == 1)

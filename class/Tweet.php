@@ -5,7 +5,7 @@
  * Date: 25.08.17
  * Time: 09:41
  */
-
+$mysqli = new mysqli('localhost', 'root', 'coderslab', 'Twitter');
 class Tweet
 {
     private $id;
@@ -16,7 +16,7 @@ class Tweet
     public function __construct()
     {
         $this->id = -1;
-        $this->userId = 0;
+        $this->userId = "";
         $this->text = "";
         $this->creationDate = "";
     }
@@ -48,5 +48,37 @@ class Tweet
     {
         return $this->creationDate;
     }
-    
+    public function saveToDb(mysqli $connection)
+    {
+        if ($this->id == -1)
+        {
+            $sql = "INSERT INTO Tweets(userId, text, creationDate) VALUES ('$this->userId', '$this->text', $this->creationDate)";
+            $result = $connection->query($sql);
+
+            if ($result == true)
+            {
+                $this->id = $connection->insert_id;
+                return true;
+            }
+            return false;
+        }
+    }
+    static public function loadTweetById(mysqli $connection, $id)
+    {
+        $sql = "SELECT * FROM Tweets WHERE id = $id";
+        $result = $connection->query($sql);
+
+        if ($result == true && $result->num_rows == 1)
+        {
+            $row = $result->fetch_assoc();
+            $loadTweet = new Tweet();
+            $loadTweet->id = $row['id'];
+            $loadTweet->userId = $row['userId'];
+            $loadTweet->text = $row['text'];
+            $loadTweet->creationDate = $row['creationDate'];
+            return $loadTweet;
+        }
+        return null;
+    }
 }
+
