@@ -34,12 +34,21 @@ include 'class/Tweet.php';
     </div>
 </nav>
 <div class="container">
+    
     <?php
     echo "<h2>";
     echo "Witaj na stronie głównej, ";
     echo $_SESSION['username'];
     echo "</h2>";
-    
+    ?>
+    <form>
+         <div class="form-group">
+            <label for="comment">Tweet</label>
+            <textarea class="form-control" rows="3" id="tweet"></textarea>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div> 
+    </form>
+    <?php
     $allTweets = new Tweet(); 
     $tweets = $allTweets::loadAllTweets($mysqli); 
     echo "<table>";
@@ -51,7 +60,6 @@ include 'class/Tweet.php';
          echo "</th>"; 
          echo "<td>"; 
          echo $tweets[$i]->getText(); 
-         echo " ";
          echo "</td>"; 
          echo "<td>"; 
          echo $tweets[$i]->getCreationDate(); 
