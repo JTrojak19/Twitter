@@ -8,6 +8,7 @@
 session_start();
 include "config.php";
 include "class/User.php";
+include 'class/Tweet.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,6 +39,26 @@ include "class/User.php";
     echo "Witaj na stronie głównej, ";
     echo $_SESSION['username'];
     echo "</h2>";
+    
+    $allTweets = new Tweet(); 
+    $tweets = $allTweets::loadAllTweets($mysqli); 
+    echo "<table>";
+    for ($i = 0; $i<count($tweets); $i++)
+    {
+         echo "<tr>";
+         echo "<th>"; 
+         echo $tweets[$i]->getUserId();
+         echo "</th>"; 
+         echo "<td>"; 
+         echo $tweets[$i]->getText(); 
+         echo " ";
+         echo "</td>"; 
+         echo "<td>"; 
+         echo $tweets[$i]->getCreationDate(); 
+         echo "</td>"; 
+         echo "</tr>"; 
+    }
+    echo "</table>"; 
     ?>
 </div>
 </body>
