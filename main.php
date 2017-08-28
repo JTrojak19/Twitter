@@ -29,6 +29,7 @@ include 'class/Tweet.php';
             <li class="active"><a href="#">Main</a></li>
             <li><a href="register.php">Messages</a></li>
             <li><a href="login.php">Settings</a></li>
+            <li><a href="profile.php">Profile</a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
     </div>
@@ -51,20 +52,25 @@ include 'class/Tweet.php';
     <?php
     $allTweets = new Tweet(); 
     $tweets = $allTweets::loadAllTweets($mysqli); 
+    $allusers = new User(); 
+    $users = $allusers::loadAllUsers($mysqli); 
     echo "<table>";
     for ($i = 0; $i<count($tweets); $i++)
     {
          echo "<tr>";
          echo "<th>"; 
-         echo $tweets[$i]->getUserId();
+         $userId = $tweets[$i]->getUserId();
+         echo $allusers::loadUserById($mysqli, $userId)->getUsername(); 
          echo "</th>"; 
+         echo "</tr>"; 
+         echo "<tr>"; 
          echo "<td>"; 
          echo $tweets[$i]->getText(); 
          echo "</td>"; 
          echo "<td>"; 
          echo $tweets[$i]->getCreationDate(); 
          echo "</td>"; 
-         echo "</tr>"; 
+         echo "</tr>";
     }
     echo "</table>"; 
     ?>
