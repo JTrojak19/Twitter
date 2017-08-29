@@ -1,5 +1,4 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', 'coderslab', 'Twitter');
 class Comment 
 {
     private $id; 
@@ -75,5 +74,24 @@ class Comment
         }
         return null; 
     }
+    static public function loadCommentsByPostId(mysqli $connection, $postId) {
+        $sql = "SELECT * FROM Comments WHERE postId = $postId"; 
+        $result = $connection->query($sql); 
+        $ret = []; 
+        if ($result == true && $result->num_rows > 0) {
+            foreach ($result as $row) {
+                $loadComment = new Comment(); 
+                $loadComment->id = $row['id']; 
+                $loadComment->userId = $row['userId']; 
+                $loadComment->postId = $row['postId']; 
+                $loadComment->creationDate = $row['creationDate']; 
+                $loadComment->text = $row['text']; 
+                
+                $ret[] = $loadComment; 
+            }
+            return $ret;
+        }
+        return null; 
+    }
 }
- 
+
