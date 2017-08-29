@@ -56,12 +56,24 @@ class Comment
             return false;
         }
     }
-    
+    static public function loadCommentsByUserId(mysqli $connection, $userId) {
+        $sql = "SELECT * FROM Comments WHERE userId = $userId"; 
+        $result = $connection->query($sql);
+        $ret = []; 
+        if ($result == true && $result->num_rows > 0) {
+            foreach ($result as $row) { 
+            $loadComment = new Comment(); 
+            $loadComment->id = $row['id']; 
+            $loadComment->userId = $row['userId']; 
+            $loadComment->postId = $row['postId']; 
+            $loadComment->creationDate = $row['creationDate']; 
+            $loadComment->text = $row['text']; 
+            
+            $ret[] = $loadComment; 
+            }
+            return $ret; 
+        }
+        return null; 
+    }
 }
-$comment = new Comment(); 
-$date = 'NOW()'; 
-$comment->setUserId(1); 
-$comment->setPostId(1); 
-$comment->setCreationDate($date); 
-$comment->setText('some text'); 
-var_dump($comment->saveToDB($mysqli)); 
+ 
