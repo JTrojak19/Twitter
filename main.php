@@ -9,6 +9,7 @@ session_start();
 include "config.php";
 include "class/User.php";
 include 'class/Tweet.php';
+include "class/Comment.php"; 
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,11 +55,15 @@ include 'class/Tweet.php';
     $tweets = $allTweets::loadAllTweets($mysqli); 
     $allusers = new User(); 
     $users = $allusers::loadAllUsers($mysqli); 
+    $comment = new Comment(); 
+    
+    
     echo "<table>";
     for ($i = 0; $i<count($tweets); $i++)
     {
          echo "<tr>";
          echo "<th>"; 
+         $postId = $tweets[$i]->getId(); 
          $userId = $tweets[$i]->getUserId();
          echo $allusers::loadUserById($mysqli, $userId)->getUsername(); 
          echo "</th>"; 
@@ -71,8 +76,23 @@ include 'class/Tweet.php';
          echo $tweets[$i]->getCreationDate(); 
          echo "</td>"; 
          echo "</tr>";
+         echo "<tr>"; 
+         $comments = $comment::loadCommentsByPostId($mysqli, $postId); 
+         foreach ($comments as $comment) {
+             echo "<td>"; 
+             $userId = $comment->getUserId(); 
+             echo $allusers::loadUserById($mysqli, $userId)->getUsername(); 
+             echo "</td>"; 
+             echo "<td>"; 
+             echo $comment->getText(); 
+             echo "<td>"; 
+             echo $comment->getCreationDate(); 
+             echo "</td>"; 
+         }
+         echo "</tr>"; 
     }
     echo "</table>"; 
+    echo "<hr>"; 
     ?>
 </div>
 </body>
