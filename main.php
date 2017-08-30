@@ -94,6 +94,13 @@ include "class/Comment.php";
     echo "</table>"; 
     echo "<hr>"; 
     ?>
+    <form>
+         <div class="form-group">
+            <label for="comment">Comment</label>
+            <textarea class="form-control" rows="3" id="comment"></textarea>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div> 
+    </form>
 </div>
 </body>
 </html>
